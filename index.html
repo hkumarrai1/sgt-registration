@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#09070d">
+<meta name="description" content="SGT Dandiya — Meet your Dandiya partner. Match your vibe anonymously, chat, reveal when you're ready and celebrate together.">
+<title>SGT Dandiya — Match Your Vibe</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&family=Pacifico&display=swap');
+
+:root{
+  --bg:#08070c;
+  --panel:#111018;
+  --panel2:#17141d;
+  --gold:#f6d69c;
+  --gold2:#dcae62;
+  --pink:#ff2870;
+  --coral:#ff5a45;
+  --cream:#fff2dd;
+  --muted:#bdb4bc;
+  --line:rgba(246,214,156,.22);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);color:#fff;font-family:"DM Sans",sans-serif;
+  overflow-x:hidden;line-height:1.55;
+}
+a{text-decoration:none;color:inherit}
+button,input,select{font:inherit}
+.container{width:min(1160px,92%);margin:auto}
+
+/* NAV */
+nav{
+  position:absolute;top:0;left:0;width:100%;z-index:10;
+  padding:25px 0;
+}
+.nav-inner{display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:12px}
+.brand-main{
+  font-family:"Cormorant Garamond";font-weight:700;font-size:34px;
+  line-height:.75;color:var(--gold)
+}
+.brand-sub{font-size:10px;letter-spacing:4px;margin-top:6px}
+.nav-links{display:flex;gap:30px;font-size:13px;color:#eee}
+.nav-links a{transition:.2s}.nav-links a:hover{color:var(--gold)}
+
+/* HERO */
+.hero{
+  min-height:100vh;position:relative;isolation:isolate;display:flex;align-items:center;
+  background:
+    radial-gradient(circle at 75% 45%,rgba(255,36,107,.14),transparent 28%),
+    linear-gradient(90deg,#07070b 0%,rgba(7,7,11,.88) 35%,rgba(7,7,11,.48) 75%,#07070b 100%);
+}
+.hero:before{
+  content:"";position:absolute;inset:0;z-index:-2;opacity:.33;
+  background:
+    linear-gradient(180deg,rgba(0,0,0,.55),rgba(0,0,0,.2)),
+    url("a_vibrant_event_landing_page_poster_style_websit.png") center/cover no-repeat;
+}
+.hero:after{
+  content:"";position:absolute;inset:auto 0 0;height:180px;z-index:-1;
+  background:linear-gradient(transparent,var(--bg));
+}
+.hero-grid{
+  display:grid;grid-template-columns:1.04fr .96fr;gap:70px;align-items:center;
+  padding:125px 0 85px;
+}
+.kicker{
+  color:var(--gold);font-size:11px;letter-spacing:6px;text-transform:uppercase;
+  font-weight:700;margin-bottom:15px;
+}
+h1{
+  font-family:"Cormorant Garamond";font-size:clamp(68px,8.5vw,118px);
+  line-height:.76;letter-spacing:-3px;
+}
+.hero-tag{
+  font-family:"Cormorant Garamond";font-size:22px;letter-spacing:4px;
+  text-transform:uppercase;color:#ffe9ca;margin:27px 0 15px;
+}
+.hero-text{font-size:17px;color:#e8e2e5;max-width:600px}
+.hero-text strong{color:var(--gold)}
+.badges{display:flex;gap:10px;flex-wrap:wrap;margin:24px 0}
+.badge{
+  border:1px solid var(--line);background:rgba(255,255,255,.035);
+  border-radius:30px;padding:8px 13px;font-size:11px;color:#eee
+}
+.badge b{color:var(--gold)}
+.cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:27px}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  padding:14px 25px;border-radius:30px;font-weight:700;font-size:14px;cursor:pointer;
+  transition:.2s;border:1px solid transparent;
+}
+.btn-primary{background:linear-gradient(90deg,var(--coral),var(--pink));box-shadow:0 12px 35px rgba(255,40,112,.2)}
+.btn-primary:hover{transform:translateY(-2px)}
+.btn-outline{border-color:var(--gold);color:var(--gold);background:transparent}
+.btn-outline:hover{background:rgba(246,214,156,.08)}
+
+.teaser{
+  font-family:Pacifico,cursive;font-size:30px;color:#111;
+  display:inline-block;background:var(--gold);padding:6px 27px 12px;
+  margin-top:25px;transform:rotate(-2deg);
+  clip-path:polygon(2% 15%,98% 0,100% 78%,5% 100%);
+}
+
+/* FORM */
+.form-card{
+  background:linear-gradient(145deg,rgba(20,18,27,.94),rgba(8,8,13,.92));
+  border:1px solid rgba(246,214,156,.58);border-radius:28px;padding:31px;
+  box-shadow:0 30px 90px rgba(0,0,0,.42);position:relative;overflow:hidden;
+}
+.form-card:before{
+  content:"";position:absolute;width:180px;height:180px;border-radius:50%;
+  background:rgba(255,40,112,.1);filter:blur(35px);right:-60px;top:-70px
+}
+.form-card h2{font-family:"Cormorant Garamond";font-size:39px;color:var(--gold);line-height:1}
+.form-card .intro{font-size:12px;color:#ccc;margin:7px 0 20px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+.field{position:relative}.field.full{grid-column:1/-1}
+.field input,.field select{
+  width:100%;height:49px;border:1px solid #35323d;border-radius:10px;
+  background:#15131a;color:#fff;padding:0 13px;outline:none
+}
+.field input::placeholder{color:#96919b}
+.field input:focus,.field select:focus{
+  border-color:var(--gold);box-shadow:0 0 0 3px rgba(246,214,156,.08)
+}
+.phone-wrap{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+.same{
+  display:flex;align-items:center;gap:7px;font-size:10px;color:#bdb7c0;
+  margin:-3px 0 1px
+}
+.same input{accent-color:var(--pink)}
+.consent{display:flex;gap:8px;align-items:flex-start;font-size:10.5px;color:#cfc8cf;line-height:1.4;margin:14px 0}
+.consent input{margin-top:3px;accent-color:var(--pink)}
+.submit{width:100%;border:0;color:#fff}
+.status{text-align:center;min-height:18px;margin-top:9px;font-size:11px;color:var(--gold)}
+
+/* SECTIONS */
+.section{padding:100px 0}
+.light{background:var(--cream);color:#32151d}
+.section-head{text-align:center;max-width:720px;margin:0 auto 52px}
+.section-kicker{font-size:11px;letter-spacing:5px;text-transform:uppercase;color:#a20d47;font-weight:700}
+.section h2{font-family:"Cormorant Garamond";font-size:55px;line-height:1;margin-top:7px}
+.section-head p{margin-top:14px;color:#634b4e;font-size:14px}
+
+.flow{display:grid;grid-template-columns:repeat(5,1fr);gap:15px;position:relative}
+.flow:before{
+  content:"";position:absolute;left:10%;right:10%;top:48px;border-top:1px dashed #c89176;z-index:0
+}
+.step{text-align:center;position:relative;z-index:1}
+.step-num{
+  width:68px;height:68px;margin:auto;border-radius:50%;display:grid;place-items:center;
+  background:var(--cream);border:1px solid #ca805d;font-family:"Cormorant Garamond";
+  font-size:27px;color:#a20d47;font-weight:700
+}
+.step h3{font-family:"Cormorant Garamond";font-size:23px;margin-top:15px}
+.step p{font-size:11px;color:#6d5658;margin-top:6px;padding:0 8px}
+
+.dark-section{background:#0b0a10}
+.dark-section .section-kicker{color:var(--gold)}
+.dark-section h2{color:#fff}
+.dark-section .section-head p{color:#bbb3bb}
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.feature{
+  padding:27px;border:1px solid var(--line);border-radius:20px;
+  background:linear-gradient(145deg,rgba(255,255,255,.035),rgba(255,255,255,.012));
+}
+.feature-icon{font-size:27px;color:var(--gold);margin-bottom:12px}
+.feature h3{font-family:"Cormorant Garamond";font-size:27px;color:#fff}
+.feature p{font-size:13px;color:#bdb6bd;margin-top:7px}
+.feature strong{color:var(--gold)}
+
+.privacy{
+  margin-top:35px;border:1px solid rgba(246,214,156,.25);border-radius:18px;
+  padding:18px 20px;color:#c9c1c9;background:rgba(246,214,156,.035);font-size:12px
+}
+.privacy b{color:var(--gold)}
+
+.prize{
+  background:linear-gradient(120deg,#330617,#65092c 50%,#25030e);
+  text-align:center;padding:90px 20px;position:relative;overflow:hidden
+}
+.prize:before,.prize:after{
+  content:"✦";position:absolute;color:rgba(246,214,156,.22);font-size:150px;
+}
+.prize:before{left:3%;top:-35px}.prize:after{right:3%;bottom:-60px}
+.prize h2{font-family:"Cormorant Garamond";font-size:58px;color:var(--gold);line-height:1}
+.prize p{max-width:650px;margin:15px auto 25px;color:#f4dfe4;font-size:14px}
+.prize-grid{display:grid;grid-template-columns:1fr 1fr;max-width:650px;margin:auto;gap:15px}
+.prize-card{
+  padding:22px;border:1px solid rgba(246,214,156,.45);border-radius:17px;
+  background:rgba(0,0,0,.18)
+}
+.prize-card .num{font-family:"Cormorant Garamond";font-size:43px;color:#fff}
+.prize-card h3{color:var(--gold);font-size:16px}.prize-card p{font-size:11px;margin:4px 0 0}
+
+footer{background:#05050a;padding:38px 0}
+.footer{display:flex;justify-content:space-between;align-items:center;gap:25px}
+.footer-brand{font-family:"Cormorant Garamond";font-size:27px;color:var(--gold)}
+.footer small{color:#96919a;font-size:10px}
+.social{text-align:right;font-size:12px;color:#ddd}
+.social a{color:var(--gold)}
+
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.78);display:none;place-items:center;z-index:50;padding:20px}
+.modal.show{display:grid}
+.modal-box{
+  max-width:430px;text-align:center;background:#111018;border:1px solid var(--gold);
+  border-radius:24px;padding:40px 30px;box-shadow:0 25px 80px #000
+}
+.modal-box .checkmark{font-size:50px;color:var(--gold)}
+.modal-box h3{font-family:"Cormorant Garamond";font-size:37px;color:var(--gold)}
+.modal-box p{color:#ccc;font-size:13px;margin-top:7px}
+.close{margin-top:22px;border:1px solid #777;background:transparent;color:#fff;border-radius:25px;padding:10px 23px;cursor:pointer}
+
+@media(max-width:900px){
+  .hero-grid{grid-template-columns:1fr;gap:45px}
+  .hero{padding-top:30px}
+  .flow{grid-template-columns:repeat(3,1fr);gap:30px}
+  .flow:before{display:none}
+}
+@media(max-width:620px){
+  .nav-links{display:none}
+  .hero-grid{padding:110px 0 65px}
+  h1{font-size:65px}
+  .hero-tag{font-size:16px;letter-spacing:2px}
+  .hero-text{font-size:15px}
+  .form-card{padding:22px}
+  .form-grid,.phone-wrap{grid-template-columns:1fr}
+  .field.full{grid-column:auto}
+  .section{padding:70px 0}
+  .section h2{font-size:43px}
+  .flow{grid-template-columns:1fr 1fr}
+  .features{grid-template-columns:1fr}
+  .prize h2{font-size:44px}
+  .prize-grid{grid-template-columns:1fr}
+  .footer{flex-direction:column;text-align:center}
+  .social{text-align:center}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container nav-inner">
+    <a class="brand" href="#home">
+      <div class="brand-main">SGT</div>
+      <div><div class="brand-sub">DANDIYA</div></div>
+    </a>
+    <div class="nav-links">
+      <a href="#how">How It Works</a>
+      <a href="#features">Features</a>
+      <a href="#early">Early Access</a>
+      <a href="#preregister">Pre-Register</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+<section class="hero" id="home">
+  <div class="container hero-grid">
+    <div>
+      <div class="kicker">Something New Is Coming to SGT</div>
+      <h1>DANDIYA<br>YOUR WAY.</h1>
+      <div class="hero-tag">Match Your Vibe • Chat • Reveal • Dance</div>
+      <p class="hero-text">
+        Imagine finding your <strong>Dandiya partner before the night even begins.</strong>
+        Our upcoming platform will match you with a student from your university or a nearby university,
+        so you can meet someone new without the awkwardness.
+      </p>
+
+      <div class="badges">
+        <span class="badge">🔒 <b>Anonymous First</b></span>
+        <span class="badge">💬 Vibe-Based Chat</span>
+        <span class="badge">🎓 University Community</span>
+        <span class="badge">💃 Dandiya Together</span>
+      </div>
+
+      <div class="teaser">Coming Soon</div>
+
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#preregister">Pre-Register Now →</a>
+        <a class="btn btn-outline" href="#how">See How It Works</a>
+      </div>
+    </div>
+
+    <div class="form-card" id="preregister">
+      <h2>Get Early Access</h2>
+      <p class="intro">Be among the first students to enter the Dandiya matching experience.</p>
+
+      <form id="regForm">
+        <div class="form-grid">
+          <div class="field"><input name="full_name" required placeholder="Full Name *"></div>
+          <div class="field"><input name="username" required placeholder="Username *"></div>
+
+          <div class="field full">
+            <input id="whatsapp" name="whatsapp" required type="tel" placeholder="WhatsApp Number *">
+          </div>
+
+          <div class="field full"><input name="email" required type="email" placeholder="Email Address *"></div>
+          <div class="field full"><input name="instagram" placeholder="Instagram ID (e.g. @yourusername)"></div>
+
+          <div class="field">
+            <select name="university" required>
+              <option value="">Your University *</option>
+              <option>SGT University</option>
+              <option>Other University</option>
+              <option>Prefer to tell later</option>
+            </select>
+          </div>
+          <div class="field">
+            <input name="location" required placeholder="City / Location *">
+          </div>
+
+          <div class="field full">
+            <input name="dob" required type="date" aria-label="Date of Birth">
+          </div>
+        </div>
+
+        <label class="consent">
+          <input type="checkbox" name="consent" required>
+          <span>I agree to receive launch/event updates via WhatsApp, SMS and Email. I understand that matching and reveal features will be subject to the platform's final terms and safety guidelines.</span>
+        </label>
+
+        <button class="btn btn-primary submit" type="submit">Join the Early List&nbsp; →</button>
+        <div class="status" id="status"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="section light" id="how">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-kicker">The Idea</div>
+      <h2>Find Your Dandiya Partner. Without The Awkward Start.</h2>
+      <p>We're building a simple way to turn a stranger into a dance partner — at your pace.</p>
+    </div>
+
+    <div class="flow">
+      <div class="step"><div class="step-num">01</div><h3>Register</h3><p>Create your profile and tell us a little about your vibe.</p></div>
+      <div class="step"><div class="step-num">02</div><h3>Get Matched</h3><p>We'll find a compatible student from your university or nearby universities.</p></div>
+      <div class="step"><div class="step-num">03</div><h3>Anonymous Chat</h3><p>Talk first. No names, no pressure — just conversations and vibe.</p></div>
+      <div class="step"><div class="step-num">04</div><h3>Mutual Reveal</h3><p>If you both feel comfortable, you can choose to reveal yourselves.</p></div>
+      <div class="step"><div class="step-num">05</div><h3>Dance Together</h3><p>Meet, become partners and make the Dandiya night memorable.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section dark-section" id="features">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-kicker">What's Coming</div>
+      <h2>A Dandiya Experience Built Around You</h2>
+      <p>Not just an event listing. A social experience designed to make meeting your partner easier.</p>
+    </div>
+
+    <div class="features">
+      <article class="feature">
+        <div class="feature-icon">◎</div>
+        <h3>Anonymous First</h3>
+        <p>Your identity stays private while you start the conversation. <strong>You decide when to reveal.</strong></p>
+      </article>
+      <article class="feature">
+        <div class="feature-icon">♡</div>
+        <h3>Match Your Vibe</h3>
+        <p>Tell us what kind of vibe you enjoy and we'll work towards a more compatible Dandiya match.</p>
+      </article>
+      <article class="feature">
+        <div class="feature-icon">⌁</div>
+        <h3>Chat Before You Meet</h3>
+        <p>Get a chance to know your match through an anonymous chat timeline before deciding anything.</p>
+      </article>
+      <article class="feature">
+        <div class="feature-icon">🎓</div>
+        <h3>Students Around You</h3>
+        <p>Matches are intended to come from <strong>your university and nearby universities</strong>, making the experience feel closer to home.</p>
+      </article>
+      <article class="feature">
+        <div class="feature-icon">↔</div>
+        <h3>Mutual Reveal</h3>
+        <p>No forced introductions. Reveal only when <strong>both people are comfortable</strong> with the match.</p>
+      </article>
+      <article class="feature">
+        <div class="feature-icon">✦</div>
+        <h3>From Stranger to Partner</h3>
+        <p>Start anonymous, find the vibe, reveal, meet and finally <strong>perform Dandiya together.</strong></p>
+      </article>
+    </div>
+
+    <div class="privacy">
+      <b>Your comfort comes first.</b> The platform is being designed around consent, privacy and user control.
+      You should never feel pressured to reveal personal information or continue a conversation you don't want to continue.
+    </div>
+  </div>
+</section>
+
+<section class="prize" id="early">
+  <div class="container">
+    <div class="section-kicker" style="color:var(--gold)">Early Registrations</div>
+    <h2>First 20 Get Something Special.</h2>
+    <p>
+      Pre-register before the platform launches. The first 20 eligible pre-registrations will receive an event pass —
+      with a limited premium allocation.
+    </p>
+
+    <div class="prize-grid" style="grid-template-columns:repeat(3,1fr);max-width:900px">
+      <div class="prize-card">
+        <div class="num">01–05</div>
+        <h3>PREMIUM PASS</h3>
+        <p>First 5 eligible pre-registrations.</p>
+      </div>
+      <div class="prize-card">
+        <div class="num">06–20</div>
+        <h3>STANDARD PASS</h3>
+        <p>Next 15 eligible pre-registrations.</p>
+      </div>
+      <div class="prize-card">
+        <div class="num">21–50</div>
+        <h3>25% OFF</h3>
+        <p>Next 30 eligible pre-registrations get 25% off.</p>
+      </div>
+    </div>
+
+    <div class="cta-row" style="justify-content:center;margin-top:28px">
+      <a class="btn btn-primary" href="#preregister">Claim Your Spot →</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container footer">
+    <div>
+      <div class="footer-brand">SGT DANDIYA</div>
+      <small>Where Tradition Brings Us Together.</small>
+    </div>
+    <div class="social">
+      <div>Follow the journey on Instagram</div>
+      <a href="#" aria-label="Instagram">@SGTDandiya</a>
+    </div>
+    <small>© 2026 SGT Dandiya • Coming Soon</small>
+  </div>
+</footer>
+
+<div class="modal" id="successModal">
+  <div class="modal-box">
+    <div class="checkmark">✓</div>
+    <h3>You're on the list!</h3>
+    <p>Welcome to the beginning of something different. We'll reach out with launch and Dandiya updates.</p>
+    <button class="close" onclick="closeModal()">Done</button>
+  </div>
+</div>
+
+<script>
+/*
+  ==========================================================
+  API SETUP
+  Replace API_URL with your backend endpoint.
+  The form sends JSON with:
+  full_name, username, whatsapp, email, instagram,
+  university, location, dob, consent
+  ==========================================================
+*/
+const API_URL = "/api/preregister";
+
+const form = document.getElementById("regForm");
+const statusBox = document.getElementById("status");
+const modal = document.getElementById("successModal");
+const whatsapp = document.getElementById("whatsapp");
+
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const button = form.querySelector(".submit");
+  const data = Object.fromEntries(new FormData(form).entries());
+
+  button.disabled = true;
+  button.textContent = "Joining...";
+  statusBox.textContent = "";
+
+  try {
+    if (API_URL) {
+      const response = await fetch(API_URL, {
+        method: "POST",
+        headers: {"Content-Type":"application/json"},
+        body: JSON.stringify(data)
+      });
+      if (!response.ok) throw new Error("API request failed");
+    } else {
+      // Demo mode until a real API endpoint is added.
+      await new Promise(resolve => setTimeout(resolve, 650));
+    }
+
+    form.reset();
+    modal.classList.add("show");
+  } catch (err) {
+    statusBox.textContent = "Something went wrong. Please try again.";
+  } finally {
+    button.disabled = false;
+    button.textContent = "Join the Early List  →";
+  }
+});
+
+function closeModal(){ modal.classList.remove("show"); }
+modal.addEventListener("click", e => { if(e.target === modal) closeModal(); });
+</script>
+</body>
+</html>
